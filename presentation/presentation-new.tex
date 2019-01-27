@@ -1,4 +1,7 @@
-\documentclass{beamer}
+\documentclass[notheorems]{beamer}
+
+\setbeamertemplate{theorem}[ams style]
+\setbeamertemplate{theorems}[numbered]
 
 % ----- Latex properties
 \usepackage[latin1]{inputenc}
@@ -14,8 +17,11 @@
 \setbeamercovered{transparent}
 
 \theoremstyle{definition}
-\newtheorem{researchquestion}[theorem]{Research question}
+\newtheorem{researchquestion}{Question}
+\newtheorem{definition}{Definition}
 
+\theoremstyle{example}
+\newtheorem{example}{Example}
 
 
 % ----- Document properties
@@ -67,6 +73,15 @@ Department~of~Information~\&~Knowledge~Management
         \item Is there a pattern here?
         \item Does it simply reflect population density?
         \item Or is the risk of disease higher in some locations?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{How can we tell?}
+    We need a tool that:
+    \begin{itemize}
+        \item allows us to compare the risk at different locations
+        \item can find areas of high risk
+        \item can do so accurately
     \end{itemize}
 \end{frame}
 
@@ -151,26 +166,51 @@ Department~of~Information~\&~Knowledge~Management
     \end{definition}
 \end{frame}
 
-% ----- SUBSECTION: Assessing the performance of the DKD
-\subsection{Assessing the performance of the DKD}
-\begin{frame}\frametitle{Assessing the performance of the DKD}
-    \begin{itemize}
-        \item Can we infer the \emph{risk} function from the data?
-        \item If so, how ``good'' a job will the DKD do?
-        \item Measures of estimation error: mean squared error, mean absolute error, maximum absolute error
-        \item Peak location -- Euclidean distance, relative error of the height
-    \end{itemize}
+\begin{frame}\frametitle{Bandwidth effect}
 \end{frame}
 
-% ----- SECTION: Research questions
-\section{Research questions}
+
+% % ----- SUBSECTION: Assessing the performance of the DKD
+% \subsection{Assessing the performance of the DKD}
+% \begin{frame}\frametitle{Assessing the performance of the DKD}
+%     \begin{itemize}
+%         \item Can we infer the \emph{risk} function from the data?
+%         \item If so, how ``good'' a job will the DKD do?
+%         \item Measures of estimation error: mean squared error, mean absolute error, maximum absolute error
+%         \item Peak location -- Euclidean distance, relative error of the height
+%     \end{itemize}
+% \end{frame}
+
+% ----- SECTION: Study goal
+\section{Study goal}
+
+\begin{frame}\frametitle{Study goal}
+    \begin{enumerate}
+        \item The goal of this study is to examine the statistical properties of the DKD
+        \item Can we infer the \emph{risk} function from the data?
+        \item If so, how ``good'' a job will the DKD do?
+        \item We empirically analyze how different factors affect the accuracy of the DKD
+        \item The DKD method can be used to estimate a rate,
+            in cases where a set of incident locations and a corresponding set of population locations are available 
+    \end{enumerate}
+\end{frame}
 
 \begin{frame}\frametitle{Research questions}
-    \begin{researchquestion}[Accuracy of DKD]
-        Under what conditions can the DKD be used to accurately estimate the true risk function, taking into account a variety of experimental setups?
+    \begin{researchquestion}{How is the accuracy of the DKD affected by:}
+        \begin{enumerate}[a)]
+            \item the duration of the study, \label{thm:accuracy-affected:duration}%
+            \item different rate functions, \label{thm:accuracy-affected:rates}%
+            \item the size of the population, \label{thm:accuracy-affected:popsize}%
+            \item and different population distributions. \label{thm:accuracy-affected:popdist}%
+        \end{enumerate}
     \end{researchquestion}
-    \begin{researchquestion}[Magnitude and location of peaks]
-        How does the DKD perform in determining the magnitude and location of the peak of the true risk function?
+    \begin{researchquestion}{When looking at the the factors in Question 1,
+    how accurate is the DKD:}
+        \begin{enumerate}[a)]
+            \item globally, over the study area as a whole, \label{thm:accuracy-scale:global}%
+            \item in magnitude, point-wise at the peaks, \label{thm:accuracy-scale:peaks}%
+            \item location of the peaks. \label{thm:accuracy-scale:peaks-location}%
+        \end{enumerate}
     \end{researchquestion}
 \end{frame}
 
@@ -179,22 +219,49 @@ Department~of~Information~\&~Knowledge~Management
 
 \begin{frame}\frametitle{Monte Carlo simulations of DKD}
     \begin{itemize}
-        \item Start with the ``truth''
-        \item Stochastic model based on Poisson process
+        \item Stochastic model of disease incidence
+        \item Start with the ``truth'' -- known risk function $\lambda(x_1, x_2)$ over the study area
         \item Simulation: generate a random sample of points (cases)
         \item Compute the DKD from the sample
         \item Compare it to the ``truth''
         \item Repeat \textellipsis
-        \item Then compute the different measures of error
+        \item Then compute the different measures of error and take the empirical average
     \end{itemize}
 \end{frame}
 
-% ----- SECTION: Preliminary results
-\section{Preliminary results}
+\begin{frame}\frametitle{Measuring the accuracy}
+    \begin{itemize}
+        \item Mean Integrated Absolute Error (MIAE) -- average absolute error over study area
+        \item Mean Integrated Squared Error (MISE) -- similar to MIAE but has theoretical uses
+        \item Supremum Error -- average of the worst case
+        \item Peak bias -- error in the height of the peak
+        \item Peak drift -- error in the location of the peak
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Experimental structure}
+\end{frame}
+
+\subsection{Bandwidth schemes}
+\begin{frame}\frametitle{Bandwidth schemes}
+    \begin{definition}
+        Oracle
+    \end{definition}
+    \begin{definition}
+        Silverman
+    \end{definition}
+    \begin{definition}
+        Least-squares cross-validation
+    \end{definition}
+\end{frame}
+
+
+% ----- SECTION: Results
+\section{Results}
 
 % ----- SUBSECTION: Results of the error analysis
-\subsection{Preliminary results of the error analysis}
-\begin{frame}\frametitle{Preliminary results of the error analysis}
+\subsection{Results of the error analysis}
+\begin{frame}\frametitle{Results of the error analysis}
     \begin{itemize}
         \item Comparison of measurements of error for different bandwidths:
         \begin{itemize}
@@ -217,8 +284,8 @@ Department~of~Information~\&~Knowledge~Management
 \end{frame}
 
 % ----- SUBSECTION: Results of the magnitude of the peaks
-\subsection{Preliminary results of the magnitude of the peaks}
-\begin{frame}\frametitle{Preliminary results of the magnitude of the peaks}
+\subsection{Results of the magnitude of the peaks}
+\begin{frame}\frametitle{Results of the magnitude of the peaks}
     \footnotesize
     \begin{itemize}
         \item True value of the peak: 0.248
@@ -276,11 +343,11 @@ Department~of~Information~\&~Knowledge~Management
 \end{frame}
 
 % ----- SECTION: Discussion
-\section{Discussion}
+\section{Discussion and Conclusion}
 
-% ----- SUBSECTION: Discussion of the research so far
-\subsection{Discussion of the research so far}
-\begin{frame}\frametitle{Discussion of the research so far}
+% ----- SUBSECTION: Discussion
+\subsection{Discussion}
+\begin{frame}\frametitle{Discussion}
     \footnotesize
     \begin{itemize}
         \item Calibrated our ``measuring device'' using a simple setup with uniform population and a single peak of incidents
@@ -305,9 +372,8 @@ Department~of~Information~\&~Knowledge~Management
     \end{itemize}
 \end{frame}
 
-% ----- SUBSECTION: Next steps
-\subsection{Next steps}
-\begin{frame}\frametitle{Next steps}
+\subsection{Conclusion}
+\begin{frame}\frametitle{Conclusion}
     In order to complete this research, we plan to do the following:
     \begin{itemize}
         \item Derive the \alert{optimal bandwidth} analytically
@@ -320,26 +386,8 @@ Department~of~Information~\&~Knowledge~Management
     \end{itemize}
 \end{frame}
 
-% ----- SECTION: Learning experience
-\section{Things I learned doing this research}
-
-\begin{frame}\frametitle{Things I learned doing this research}
-    \begin{itemize}
-        \item I learned a few things about chronic disease epidemiology
-        \begin{itemize}
-            \item Incidence versus prevalance
-            \item Risk
-        \end{itemize}
-        \item I mostly learned a lot of statistics
-        \begin{itemize}
-            \item Unsupervised learning -- density estimation
-            \item Measures of error
-            \item The importance of sample size
-            \item Non-parametric statistics
-            \item Monte Carlo simulations
-            \item Bootstrap
-        \end{itemize}
-    \end{itemize}
+\subsection{Further research}
+\begin{frame}\frametitle{Further research}
 \end{frame}
 
 % ----- SECTION: References
