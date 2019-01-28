@@ -1,0 +1,18 @@
+%latex.default(df, file = "h_per_mu.tex", title = "h_per_mu",     where = "htbp", label = "tab:results:bandwidth_vs_mu", rowname = NULL,     booktabs = TRUE, cgroup = c("", "Mean Bandwidths", "NMISE"),     n.cgroup = c(1, 5, 3), colheads = c("$N_I$", "$h_{o1}$",         "$h_{o2}$", "$h_{s}$", "$h_{cv1}$", "$h_{cv2}$", "Oracle",         "Silverman", "CV"), cdec = c(0, rep(1, 5), rep(3, 3)),     caption.loc = "bottom", caption = "Bandwidth and accuracy by expected number of incidents for uniform population of 10,000 with single-peak risk function, spread of 1.0. The NMISE values are scaled by $10^9$.",     caption.lot = "Bandwidth and accuracy by expected number of incidents")%
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{rcrrrrrcrrr}
+\toprule
+\multicolumn{1}{c}{\bfseries }&\multicolumn{1}{c}{\bfseries }&\multicolumn{5}{c}{\bfseries Mean Bandwidths}&\multicolumn{1}{c}{\bfseries }&\multicolumn{3}{c}{\bfseries NMISE}\tabularnewline
+\cline{3-7} \cline{9-11}
+\multicolumn{1}{c}{$N_I$}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{$h_{o1}$}&\multicolumn{1}{c}{$h_{o2}$}&\multicolumn{1}{c}{$h_{s}$}&\multicolumn{1}{c}{$h_{cv1}$}&\multicolumn{1}{c}{$h_{cv2}$}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{Oracle}&\multicolumn{1}{c}{Silverman}&\multicolumn{1}{c}{CV}\tabularnewline
+\midrule
+$  50$&&$1.5$&$1.5$&$1.0$&$1.4$&$1.4$&&$3.541$&$5.718$&$5.438$\tabularnewline
+$ 100$&&$1.3$&$1.4$&$0.9$&$1.3$&$1.2$&&$2.220$&$3.526$&$3.398$\tabularnewline
+$ 200$&&$1.2$&$1.2$&$0.8$&$1.1$&$1.1$&&$1.324$&$2.085$&$1.988$\tabularnewline
+$ 500$&&$1.1$&$1.0$&$0.7$&$0.9$&$0.9$&&$0.679$&$1.067$&$0.959$\tabularnewline
+$1000$&&$0.9$&$0.9$&$0.6$&$0.9$&$0.8$&&$0.382$&$0.621$&$0.541$\tabularnewline
+\bottomrule
+\end{tabular}
+\caption[Bandwidth and accuracy by expected number of incidents]{Bandwidth and accuracy by expected number of incidents for uniform population of 10,000 with single-peak risk function, spread of 1.0. The NMISE values are scaled by $10^9$.\label{tab:results:bandwidth_vs_mu}}\end{center}
+\end{table}

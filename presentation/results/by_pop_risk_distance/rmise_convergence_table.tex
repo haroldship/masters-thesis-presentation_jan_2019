@@ -1,0 +1,14 @@
+%latex.default(df.alpha, title = "rmise_convergence_table", where = "htbp",     label = "tab:results:rmise_convergence_by_pop_incident_gap",     rowname = NULL, booktabs = TRUE, cdec = c(0, 3), caption.loc = "bottom",     caption = "RMISE convergence rate by incident-population peak distance for different bandwidth selectors for a single-peak risk function with spread of 1.0 on a single-peak population of 10,000.",     caption.lot = "RMISE Convergence rate by incident-population peak distance")%
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+\multicolumn{1}{c}{Selector}&\multicolumn{1}{c}{Gap}\tabularnewline
+\midrule
+Oracle&$1.082$\tabularnewline
+Silverman&$1.028$\tabularnewline
+CV&$1.153$\tabularnewline
+\bottomrule
+\end{tabular}
+\caption[RMISE Convergence rate by incident-population peak distance]{RMISE convergence rate by incident-population peak distance for different bandwidth selectors for a single-peak risk function with spread of 1.0 on a single-peak population of 10,000.\label{tab:results:rmise_convergence_by_pop_incident_gap}}\end{center}
+\end{table}

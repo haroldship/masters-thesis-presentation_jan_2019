@@ -1,0 +1,14 @@
+%latex.default(df.alpha, title = "nmise_convergence_table", where = "htbp",     label = "tab:results:nmise_convergence_by_sample_size", rowname = NULL,     booktabs = TRUE, cdec = c(0, 3), caption.loc = "bottom",     caption = "NMISE convergence rate by sample size for different bandwidth selectors for a fixed, single-peak risk function with expected number of incidents proportional to population size on a uniform population.",     caption.lot = "NMISE Convergence rate by sample size")%
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+\multicolumn{1}{c}{Selector}&\multicolumn{1}{c}{Slope}\tabularnewline
+\midrule
+Oracle&$-2.689$\tabularnewline
+Silverman&$-2.688$\tabularnewline
+CV&$-2.741$\tabularnewline
+\bottomrule
+\end{tabular}
+\caption[NMISE Convergence rate by sample size]{NMISE convergence rate by sample size for different bandwidth selectors for a fixed, single-peak risk function with expected number of incidents proportional to population size on a uniform population.\label{tab:results:nmise_convergence_by_sample_size}}\end{center}
+\end{table}

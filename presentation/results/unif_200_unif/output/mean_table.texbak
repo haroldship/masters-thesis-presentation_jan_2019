@@ -1,0 +1,24 @@
+% latex table generated in R 3.3.3 by xtable 1.8-2 package
+% Sun Mar 11 18:31:32 2018
+\begin{tabular}{lrrr}
+  \hline
+ & Oracle & Silverman & CV \\ 
+  \hline
+MISE & 0.000037 & 0.000038 & 0.000040 \\ 
+  Relative MISE & 0.092291 & 0.095394 & 0.100327 \\ 
+  Normalized MISE & 0.000000 & 0.000000 & 0.000000 \\ 
+  MIAE & 0.004869 & 0.004967 & 0.005113 \\ 
+  Relative MIAE & 0.243458 & 0.248328 & 0.255629 \\ 
+  Normalized MIAE & 0.000000 & 0.000000 & 0.000000 \\ 
+  Max Error & 0.016749 & 0.017137 & 0.017162 \\ 
+  Normalized Max Error & 0.000000 & 0.000000 & 0.000000 \\ 
+  Peak bias & 0.006934 & 0.009368 & 0.009220 \\ 
+  Relative Peak bias & 0.346684 & 0.468423 & 0.461011 \\ 
+  Peak drift & 5.326630 & 5.372630 & 5.335559 \\ 
+  Relative Peak drift & 0.760947 & 0.767519 & 0.762223 \\ 
+  Centroid bias & 0.004479 & 0.004715 & 0.004133 \\ 
+  Relative Centroid bias & 0.223961 & 0.235770 & 0.206673 \\ 
+  Centroid drift & 5.214051 & 5.193263 & 5.185048 \\ 
+  Relative Centroid drift & 0.744864 & 0.741895 & 0.740721 \\ 
+   \hline
+\end{tabular}
