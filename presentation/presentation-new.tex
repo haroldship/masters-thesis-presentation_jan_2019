@@ -380,28 +380,31 @@ Department~of~Information~\&~Knowledge~Management
     \end{table}
 \end{frame}
 
-% ----- SUBSECTION: Results of the magnitude of the peaks
-\subsection{Results of the magnitude of the peaks}
-\begin{frame}\frametitle{Results of the magnitude of the peaks}
-    \footnotesize
+% ----- SUBSECTION: Other effects studied
+\subsection{Other effects studied}
+\begin{frame}\frametitle{Other effects studied}
+    For brevity, the results of the following are not shown:
+    \\
     \begin{itemize}
-        \item For uniform populations, the peak bias is always negative when computing the DKD with the Oracle and CV bandwidths,
-        \item Silverman bandwidths mostly had positive bias due to undersmoothing
-        \item For peaked populations, all of the bandwidth selection techniques including the oracle resulted in positive peak bias
-        \item The centroid bias was closer to zero for all bandwidth selectors and population distributions
+        \item Effect of risk spread
+        \item Effect of varying population and sample in tandem
+        \item Effect of varying the population spread
+        \item Effect of the distance between two peaks (bimodal)
     \end{itemize}
 \end{frame}
 
-% ----- SUBSECTION: Results of the location of the peaks
-\subsection{Results of the location of the peaks}
-\begin{frame}\frametitle{Results of the location of the peaks}
+% ----- SUBSECTION: Results of the magnitude and location of the peaks
+\subsection{Results of the magnitude and location of the peaks}
+\begin{frame}\frametitle{Results of the magnitude and location of the peaks}
     \footnotesize
     \begin{itemize}
         \item For uniform populations, the peak bias is always negative when computing the DKD with the Oracle and CV bandwidths,
         \item Silverman bandwidths mostly had positive bias due to undersmoothing
         \item For peaked populations, all of the bandwidth selection techniques including the oracle resulted in positive peak bias
         \item The centroid bias was closer to zero for all bandwidth selectors and population distributions
+        \item The centroid drift was smaller for all bandwidth selectors and population distributions
     \end{itemize}
+    Therefore, the 
 \end{frame}
 
 % ----- SECTION: Conclusion
@@ -482,20 +485,27 @@ Department~of~Information~\&~Knowledge~Management
 
 \subsection{Limitations}
 \begin{frame}\frametitle{Limitations}
-    In order to complete this research, we plan to do the following:
+    This study has several limitations:
+    \\
     \begin{itemize}
-        \item Derive the \alert{optimal bandwidth} analytically
-        \item \textellipsis and develop a method to estimate it accurately
-        \item Vary the number of incidents: use 200, 500, and 1,000
-        \item Vary the number of peaks: 1, 2, 3
-        \item Use different levels of ``concentration'' of the peak by varying the standard deviation of the ``truth'': 2, 4, 8
-        \item Use a non-uniform population, one that also has a peak in the center of the study area
-        \item Compute the centroid of the top 5\% of the DKD values instead of the global maximum
+        \item This study uses simulated data, based on a known ``true'' function, which is different from a typical epidemiological study
+        \item These true functions do not represent any actual incidents or populations, but allow us to control various factors
+        \item We only compared two bandwidth selectors
+        \item We did not use adaptive bandwidths
+        \item We covered the randomness in the incidents but not the population
     \end{itemize}
 \end{frame}
 
 \subsection{Further research}
 \begin{frame}\frametitle{Further research}
+    Suggestions for further research into the statistical properties of the DKD:
+    \\
+    \begin{itemize}
+        \item This study made use of uniform populations, as well as populations with a single peak. Further studies should focus on a wider variety of population distributions.
+        \item Further studies should examine the uncertainty in the population distribution
+        \item Further studies should examine the effects of edge correction on both the population and incident estimates
+        \item We could examine other epidemiological measures of risk such as relative risk
+    \end{itemize}
 \end{frame}
 
 % ----- SECTION: References
