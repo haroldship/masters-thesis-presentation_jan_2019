@@ -19,9 +19,12 @@
 \theoremstyle{definition}
 \newtheorem{researchquestion}{Question}
 \newtheorem{definition}{Definition}
+\newtheorem{answer}{Answer to question}
 
 \theoremstyle{example}
 \newtheorem{example}{Example}
+\newtheorem{recommendation}{Recommendation}
+
 
 
 % ----- Document properties
@@ -394,27 +397,73 @@ Department~of~Information~\&~Knowledge~Management
 \subsection{Discussion}
 \begin{frame}\frametitle{Discussion}
     \footnotesize
-    \begin{itemize}
-        \item Calibrated our ``measuring device'' using a simple setup with uniform population and a single peak of incidents
-        \item The present simulation experiment estimates DKD accuracy in terms of magnitude of the true peaks:
-        \begin{itemize}
-            \scriptsize
-            \item within a 9\% error margin and in 90\% of cases underestimates the peak magnitude for the small bandwidth
-            \item within a 34\% error margin and in 100\% of cases underestimates the peak magnitude for the large bandwidth
-        \end{itemize}
-        \item The present simulation experiment estimates DKD accuracy in terms of location of the true peaks:
-        \begin{itemize}
-            \scriptsize
-            \item are within a 3.5\% error margin for 56\% of cases with the small bandwidth
-            \item are within a 1.2\% error margin for 46\% of cases with the large bandwidth
-        \end{itemize}
-        \item Now we would like to:
-        \begin{itemize}
-            \scriptsize
-            \item Derive and evaluate the optimal bandwidth, which minimizes estimation error
-            \item Apply our measuring device to realistic scenarios
-        \end{itemize}
-    \end{itemize}
+    \begin{answer}
+        \begin{enumerate}[a)]
+            \item
+                While the MISE increased as the expected number of incidents grew,
+                the normalized mean integrated squared error (NMISE) decreased at a similar rate in the examples we considered
+                for Silverman ($n^{-0.741}$) and CV ($n^{-0.775}$).
+                Using two years worth of data should result in the global error MISE to be about 60\% of a single year's.
+                Conversely, to reduce the MISE to half of a given value one needs 2.5 times as many incidents.
+            \item
+                The DKD accuracy was affected by the spread of the incidence function,
+                in that the MISE decreased sharply as the incidence rate spread increased and the height of the peak was lower.
+                CV performed better at $\sigma^{-1.576}$ than $\sigma^{-1.421}$ for Silverman.
+            \item
+                By all measures, the DKD is sensitive to large variations in population density.
+                For populations with a very sharp peak (10\% of the study area),
+                the DKD accuracy was 2-10 times worse than all other cases.
+                Otherwise the accuracy measures were stable.
+                However, the estimation errors observed for the uniform populations were much lower than the peaked populations.
+            \item
+                Increasing the population spread saw a sharp decrease in the MISE.
+        \end{enumerate}
+    \end{answer}
+\end{frame}
+
+% ----- SUBSECTION: Discussion continued
+\subsection{Discussion continued}
+\begin{frame}\frametitle{Discussion continued}
+    \begin{answer}
+        \begin{enumerate}[a)]
+            \item
+                The Normalized MISE is less than 5\% for uniform populations,
+                and less than 5\% for most of the peaked populations.
+                Furthermore, NMISE improves when the number of incidents increases.
+                This is so regardless of whether this is due to an increase in the rate or in the population size.
+                Also, the global accuracy increases when the spread of the rate increases.
+            \item
+                The magnitude peak can be estimated with the DKD within 10\% for uniform populations,
+                but overestimates the peak for peaked populations.
+            \item
+                The location of the peak can be estimated with the DKD within 10\% of the size of the study area for uniform populations,
+                and within 15\% for peaked populations.
+        \end{enumerate}
+    \end{answer}
+\end{frame}
+
+% ----- SUBSECTION: Recommendations
+\subsection{Recommendations}
+\begin{frame}\frametitle{Recommendations}
+    \footnotesize
+    \begin{recommendation}
+        For computing the DKD,
+        we recommend a bandwidth of between 5\% and 20\% of the width or height of the study area.
+    \end{recommendation}
+    \begin{recommendation}
+        We recommend a sample size of at least 50 incidents for the DKD.
+        For a population of size 10,000, this is an overall rate of 0.5\%,
+        and for a population of size 5,000, this is an overall rate of 1.0\%.
+    \end{recommendation}
+    \begin{recommendation}
+        For overall accuracy,
+        we recommend the Silverman Rule of Thumb for computing the bandwidth due to its simplicity.
+        However, if the location of the peak is important, we recommend least squares cross-validation.
+    \end{recommendation}
+    \begin{recommendation}
+        When the population density is highly variable,
+        we do not recommend computing the DKD over the entire study area.
+    \end{recommendation}
 \end{frame}
 
 \subsection{Conclusion}
