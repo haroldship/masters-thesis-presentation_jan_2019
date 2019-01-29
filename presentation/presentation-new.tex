@@ -7,7 +7,7 @@
 \usepackage[latin1]{inputenc}
 \usepackage{tikz} % 2D drawing
 \usepackage{graphicx} % enhanced graphics
-\graphicspath{ {img/} }
+\graphicspath{ {./img/} {./} }
 
 % ----- Beamer theme properties
 \usetheme[left,hideothersubsections]{Goettingen}
@@ -166,22 +166,27 @@ Department~of~Information~\&~Knowledge~Management
     \end{definition}
 \end{frame}
 
-% ----- SUBSECTION: Bandwidth effect
-\subsection{Bandwidth effect}
-\begin{frame}\frametitle{Bandwidth effect}
+% ----- SUBSECTION: Effect of the bandwidth
+\subsection{Effect of the bandwidth}
+\begin{frame}\frametitle{Effect of the bandwidth}
+    When the bandwidth is:
+    \begin{itemize}
+        \item too large (R), important details may be lost
+        \item too small (L), noise may produce artifacts
+        \item just right (C) best estimate
+    \end{itemize}
+    \begin{example}{\tiny{\textbf{Left:} $h=0.2$ \textbf{Middle:} $h=0.4$ \textbf{Right:} $h=0.8$ }}
+    \centerline{
+        \label{fig:points-and-dkd}
+        \centering
+        \includegraphics[width=0.3\textwidth]{kernel1d-02}
+        \includegraphics[width=0.3\textwidth]{kernel1d-04}
+        \includegraphics[width=0.3\textwidth]{kernel1d-08}
+    }
+    \end{example}
 \end{frame}
 
 
-% % ----- SUBSECTION: Assessing the performance of the DKD
-% \subsection{Assessing the performance of the DKD}
-% \begin{frame}\frametitle{Assessing the performance of the DKD}
-%     \begin{itemize}
-%         \item Can we infer the \emph{risk} function from the data?
-%         \item If so, how ``good'' a job will the DKD do?
-%         \item Measures of estimation error: mean squared error, mean absolute error, maximum absolute error
-%         \item Peak location -- Euclidean distance, relative error of the height
-%     \end{itemize}
-% \end{frame}
 
 % ----- SECTION: Study goal
 \section{Study goal}
@@ -223,6 +228,21 @@ Department~of~Information~\&~Knowledge~Management
 % ----- SECTION: Methodology
 \section{Methodology}
 
+% ----- SUBSECTION: Bandwidth schemes
+\subsection{Bandwidth schemes}
+\begin{frame}\frametitle{Bandwidth schemes}
+
+    \begin{definition}
+        Oracle
+    \end{definition}
+    \begin{definition}
+        Silverman
+    \end{definition}
+    \begin{definition}
+        Least-squares cross-validation
+    \end{definition}
+\end{frame}
+
 % ----- SUBSECTION: Monte Carlo simulations of DKD
 \subsection{Monte Carlo simulations of DKD}
 \begin{frame}\frametitle{Monte Carlo simulations of DKD}
@@ -245,28 +265,40 @@ Department~of~Information~\&~Knowledge~Management
         \item Mean Integrated Squared Error (MISE) -- similar to MIAE but has theoretical uses
         \item Supremum Error -- average of the worst case
         \item Peak bias -- error in the height of the peak
-        \item Peak drift -- error in the location of the peak
+        \item Peak drift -- distance from true peak to peak of the estimate
+        \item Centroid is the center point of the top 5\% of the estimated values
+        \item Centroid bias is measured by subtracting the true peak from the estimated value at the centroid
+        \item Centroid drift is the distance from true peak to the centroid
     \end{itemize}
 \end{frame}
 
 % ----- SUBSECTION: Experimental structure
 \subsection{Experimental structure}
 \begin{frame}\frametitle{Experimental structure}
+    \begin{enumerate}
+        \item Define the study area $W$ with buffer
+        \item Generate a population $P$ of size $N_p$ using chosen population distribution
+        \item Generate the \textbf{true} incident risk function $\lambda(x_1, x_2)$
+        \item Compute the Oracle bandwidths $h_o1$, $h_o2$
+        \item Do 1,00 simulations and compute errors
+    \end{enumerate}
 \end{frame}
 
-% ----- SUBSECTION: Bandwidth schemes
-\subsection{Bandwidth schemes}
-\begin{frame}\frametitle{Bandwidth schemes}
-    \begin{definition}
-        Oracle
-    \end{definition}
-    \begin{definition}
-        Silverman
-    \end{definition}
-    \begin{definition}
-        Least-squares cross-validation
-    \end{definition}
+% ----- SUBSECTION: Main simulations
+\subsection{Main simulations}
+\begin{frame}\frametitle{Main simulations}
+    \begin{enumerate}
+        \item Generate a random sample of incidents $I$ from the population $P$ using on the risk function $\lambda$
+        \item Compute the Oracle estimate of $\lambda_I$
+        \item At each grid point $(x_{1,i}, x_{2,i})$,
+                divide the Oracle estimate of $\lambda_I(x_{1,i}, x_{2,i})$
+                by $\lambda_P(x_{1,i}, x_{2,i})$ to obtain $\hat{\lambda_o}(x_{1,i}, x_{2,i})$
+        \item Compute the accuracy measures for the Oracle (absolute and relative)
+        \item Repeat steps 1 to 4 using the bandwidth computed with Silverman
+        \item Repeat steps 1 to 4 using the bandwidths computed by CV
+    \end{enumerate}
 \end{frame}
+
 
 
 % ----- SECTION: Results
