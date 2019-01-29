@@ -38,6 +38,11 @@ of the Double Kernel Density Estimator
     Harold~Ship
     \\
     {%
+    \tiny
+    THESIS SUBMITTED IN PARTIAL FULFILLMENT OF THE REQUIREMENTS FOR THE MASTER'S DEGREE
+    }
+    \\
+    {%
     \small
     Advisors: Prof.~Boris~Portnov \and
     Dr.~Itai~Dattner \and
@@ -157,14 +162,14 @@ Department~of~Information~\&~Knowledge~Management
 \subsection{Estimating disease risk with the double kernel density}
 \begin{frame}\frametitle{Estimating disease risk with the double kernel density}
     \begin{itemize}
-        \item We want to know $\lambda$, the risk of developing disease, at a point $(x,y)$
+        \item We want to know $\lambda$, the risk of developing disease, at a point $(x_1,x_2)$
         \item Smooth the cases and the population separately
         \item Divide to get a function \textbf{$\hat{\lambda}$} that \emph{estimates} the risk at any point
     \end{itemize}
     \begin{definition}
         The \alert{double kernel density} estimator is computed at a point by dividing the \emph{disease case intensity} by the \emph{population intensity} at that point.
         \begin{equation*}
-            \hat{\lambda}_{dkd}(x,y;h) = \frac{ \hat{\lambda}_{c}(x,y;h) } { \hat{\lambda}_{p}(x,y;h) }
+            \hat{\lambda}_{dkd}(x_1,x_2;h) = \frac{ \hat{\lambda}_{I}(x_1,x_2;h) } { \hat{\lambda}_{P}(x_1,x_2;h) }
         \end{equation*}
     \end{definition}
 \end{frame}
@@ -189,7 +194,25 @@ Department~of~Information~\&~Knowledge~Management
     \end{example}
 \end{frame}
 
-
+% ----- SUBSECTION: Choosing the bandwidth
+\subsection{Choosing the bandwidth}
+\begin{frame}\frametitle{Choosing the bandwidth}
+    \small
+    There are many schemes, we use 3 (well, 2 plus Oracle)
+    \begin{definition}
+        \textbf{Oracle bandwidth} minimizes the empirical MISE,
+        computed from the data samples generated from the true intensity function.
+        Needs to know the ``truth''.
+    \end{definition}
+    \begin{definition}
+        \textbf{Silverman's Rule of Thumb bandwidth} $h_S = 2.04~\sigma~n^{-1/6}$
+    \end{definition}
+    \begin{definition}
+        \textbf{Least Squares Cross Validation (CV) bandwidth} uses leave-one-out cross validation to minimize the CV error.
+            Choose the pair of bandwidths $h_{x_1}, h_{x_2}$ that minimizes the CV error.
+            Asymptotically in $n$, the bandwidth that minimizes MISE also minimizes CV error which can be computed without knowing the ``truth''.
+    \end{definition}
+\end{frame}
 
 % ----- SECTION: Study goal
 \section{Study goal}
@@ -230,21 +253,6 @@ Department~of~Information~\&~Knowledge~Management
 
 % ----- SECTION: Methodology
 \section{Methodology}
-
-% ----- SUBSECTION: Bandwidth schemes
-\subsection{Bandwidth schemes}
-\begin{frame}\frametitle{Bandwidth schemes}
-
-    \begin{definition}
-        Oracle
-    \end{definition}
-    \begin{definition}
-        Silverman
-    \end{definition}
-    \begin{definition}
-        Least-squares cross-validation
-    \end{definition}
-\end{frame}
 
 % ----- SUBSECTION: Monte Carlo simulations of DKD
 \subsection{Monte Carlo simulations of DKD}
@@ -390,12 +398,12 @@ Department~of~Information~\&~Knowledge~Management
     \end{example}
 \end{frame}
 
-% ----- SECTION: Discussion
-\section{Discussion and Conclusion}
+% ----- SECTION: Conclusion
+\section{Conclusion}
 
-% ----- SUBSECTION: Discussion
-\subsection{Discussion}
-\begin{frame}\frametitle{Discussion}
+% ----- SUBSECTION: Conclusion
+\subsection{Conclusion}
+\begin{frame}\frametitle{Conclusion}
     \footnotesize
     \begin{answer}
         \begin{enumerate}[a)]
@@ -421,9 +429,9 @@ Department~of~Information~\&~Knowledge~Management
     \end{answer}
 \end{frame}
 
-% ----- SUBSECTION: Discussion continued
-\subsection{Discussion continued}
-\begin{frame}\frametitle{Discussion continued}
+% ----- SUBSECTION: Conclusion continued
+\subsection{Conclusion continued}
+\begin{frame}\frametitle{Conclusion continued}
     \begin{answer}
         \begin{enumerate}[a)]
             \item
@@ -466,8 +474,8 @@ Department~of~Information~\&~Knowledge~Management
     \end{recommendation}
 \end{frame}
 
-\subsection{Conclusion}
-\begin{frame}\frametitle{Conclusion}
+\subsection{Limitations}
+\begin{frame}\frametitle{Limitations}
     In order to complete this research, we plan to do the following:
     \begin{itemize}
         \item Derive the \alert{optimal bandwidth} analytically
