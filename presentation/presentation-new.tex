@@ -382,50 +382,24 @@ Department~of~Information~\&~Knowledge~Management
             \end{tabular}
         \end{column}
     \end{columns}
-
-    % \begin{figure}
-    %         \includegraphics[width=0.3\textwidth]{results/by_num_cases/NMISE-vs-cases-log-log}
-    %         \begin{tabular}{lr}
-    %             \toprule
-    %             \multicolumn{1}{c}{Selector}&\multicolumn{1}{c}{Slope}\tabularnewline
-    %             \midrule
-    %             Oracle&$-0.742$\tabularnewline
-    %             Silverman&$-0.741$\tabularnewline
-    %             CV&$-0.775$\tabularnewline
-    %             \bottomrule
-    %         \end{tabular}
-    % \end{figure}
-    % \begin{figure}
-    %     \includegraphics[width=0.35\textwidth]{results/by_num_cases/NMISE-vs-cases-log-log}
-    % \end{figure}
-    % \begin{table}[htbp]
-    %     \footnotesize
-    %     \begin{center}
-    %         \begin{tabular}{lr}
-    %             \toprule
-    %             \multicolumn{1}{c}{Selector}&\multicolumn{1}{c}{Slope}\tabularnewline
-    %             \midrule
-    %             Oracle&$-0.742$\tabularnewline
-    %             Silverman&$-0.741$\tabularnewline
-    %             CV&$-0.775$\tabularnewline
-    %             \bottomrule
-    %         \end{tabular}
-    %     \caption{\tiny NMISE convergence rate by number of cases for different bandwidth selectors.}
-    %     \end{center}
-    % \end{table}
 \end{frame}
 
 % ----- SUBSECTION: Other effects studied
 \subsection{Other effects studied}
 \begin{frame}\frametitle{Other effects studied}
-    For brevity, the results of the following are not shown:
-    \\
-    \begin{itemize}
-        \item Effect of risk spread
-        \item Effect of varying population and sample in tandem
-        \item Effect of varying the population spread
-        \item Effect of the distance between two peaks (bimodal)
-    \end{itemize}
+    Summary of the results of other factors effects on DKD accuracy (NMISE):
+    {\scriptsize
+    \begin{tabular}{p{3.5cm}lrrr}
+        \toprule
+        Factor & Formula & Oracle & Silverman & CV \tabularnewline
+        \midrule
+        Risk Spread $\sigma_I$ & $NMISE \sim \sigma_I^{\alpha}$ & -1.455 & -1.421 & -1.521 \\
+        \raggedright Population $N_P$ and expected sample size $\mu$ & $NMISE \sim \mu^{\alpha}$ & -2.689 & -2.688 & -2.741 \\
+        Population Spread $\sigma_P$ & \multicolumn{4}{p{6cm}}{\raggedright No linear relationship found, but CV is notably better than Silverman and errors were high for very small $\sigma_P$} \\
+        Distance between 2 peaks  & \multicolumn{4}{p{6cm}}{\raggedright Affects mostly peak and centroid bias and drift: when distance is small these measures are large} \\
+        \bottomrule
+    \end{tabular}
+    }
 \end{frame}
 
 % ----- SUBSECTION: Results of the magnitude and location of the peaks
