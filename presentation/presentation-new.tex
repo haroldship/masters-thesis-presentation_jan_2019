@@ -358,14 +358,19 @@ Department~of~Information~\&~Knowledge~Management
 \subsection{Effect of expected number of incidents}
 \begin{frame}\frametitle{Effect of expected number of incidents}
     \scriptsize
-    Effect of expected number of incidents for a fixed, uniform population of 10,000 and single peak with spread 1.0
-    \begin{figure}
-        \caption{\tiny Log-log plot of NMISE vs expected number of cases}
-        \includegraphics[width=0.35\textwidth]{results/by_num_cases/NMISE-vs-cases-log-log}
-    \end{figure}
-    \begin{table}[htbp]
-        \footnotesize
-        \begin{center}
+    \begin{itemize}
+        \item Effect of expected number of incidents for a fixed, uniform population of 10,000 and single peak with spread 1.0
+        \item Log-log plot shows NMISE vs expected number of cases $\mu$ for the different bandwidth schemes
+        \item The table shows the slope $\alpha$ where
+            $$
+                \mbox{NMISE} \sim \mu^{\alpha}
+            $$
+    \end{itemize}
+    \begin{columns}
+        \begin{column}{0.48\textwidth}
+            \includegraphics[width=0.9\textwidth]{results/by_num_cases/NMISE-vs-cases-log-log}
+        \end{column}
+        \begin{column}{0.48\textwidth}
             \begin{tabular}{lr}
                 \toprule
                 \multicolumn{1}{c}{Selector}&\multicolumn{1}{c}{Slope}\tabularnewline
@@ -375,9 +380,39 @@ Department~of~Information~\&~Knowledge~Management
                 CV&$-0.775$\tabularnewline
                 \bottomrule
             \end{tabular}
-        \caption{\tiny NMISE convergence rate by number of cases for different bandwidth selectors.}
-        \end{center}
-    \end{table}
+        \end{column}
+    \end{columns}
+
+    % \begin{figure}
+    %         \includegraphics[width=0.3\textwidth]{results/by_num_cases/NMISE-vs-cases-log-log}
+    %         \begin{tabular}{lr}
+    %             \toprule
+    %             \multicolumn{1}{c}{Selector}&\multicolumn{1}{c}{Slope}\tabularnewline
+    %             \midrule
+    %             Oracle&$-0.742$\tabularnewline
+    %             Silverman&$-0.741$\tabularnewline
+    %             CV&$-0.775$\tabularnewline
+    %             \bottomrule
+    %         \end{tabular}
+    % \end{figure}
+    % \begin{figure}
+    %     \includegraphics[width=0.35\textwidth]{results/by_num_cases/NMISE-vs-cases-log-log}
+    % \end{figure}
+    % \begin{table}[htbp]
+    %     \footnotesize
+    %     \begin{center}
+    %         \begin{tabular}{lr}
+    %             \toprule
+    %             \multicolumn{1}{c}{Selector}&\multicolumn{1}{c}{Slope}\tabularnewline
+    %             \midrule
+    %             Oracle&$-0.742$\tabularnewline
+    %             Silverman&$-0.741$\tabularnewline
+    %             CV&$-0.775$\tabularnewline
+    %             \bottomrule
+    %         \end{tabular}
+    %     \caption{\tiny NMISE convergence rate by number of cases for different bandwidth selectors.}
+    %     \end{center}
+    % \end{table}
 \end{frame}
 
 % ----- SUBSECTION: Other effects studied
