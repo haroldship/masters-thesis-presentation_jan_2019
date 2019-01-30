@@ -301,6 +301,10 @@ Department~of~Information~\&~Knowledge~Management
 \begin{frame}\frametitle{Main simulations}
     \begin{enumerate}
         \item Generate a random sample of incidents $I$ from the population $P$ using on the risk function $\lambda$
+            \begin{itemize}
+                \item compute $p = \lambda(x_1,x_2)$ for each person's location
+                \item keep the person with probability $p$
+            \end{itemize}
         \item Compute the Oracle estimate of $\lambda_I$
         \item At each grid point $(x_{1,i}, x_{2,i})$,
                 divide the Oracle estimate of $\lambda_I(x_{1,i}, x_{2,i})$
